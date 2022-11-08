@@ -58,32 +58,81 @@ void displayDice(int dice)
    }
 }
 
-float suma(float A, float B)
+void tirarUnaVez(int juego[])
 {
-   return A + B;
-}
-float resta(float A, float B)
-{
-   return A - B;
-}
-float multiplicacion(float A, float B)
-{
-   return A * B;
-}
-
-// generate trully random numbers
-
-int tirar(int juego[])
-{
-
-   // Generar numero al azar para los dados
    srand(time(NULL));
    for (int i = 0; i < 5; i++)
    {
       juego[i] = rand() % 6 + 1;
       displayDice(juego[i]);
    }
+}
 
+void tirarDeNuevo(int juego[])
+{
+   // Tirar de nuevo ciertos dados y actualizar el array
+   char respuesta[10 + 1];
+   srand(time(NULL));
 
-   return 0;
+   cout << "Que dado/s desea volver a tirar? (Ingrese 1,2,3 si desea volver a tirar el dado 1, 2 y 3 respectivamente)" << endl;
+   cin >> respuesta;
+   // validar respuesta
+   if (respuesta == NULL)
+   {
+      cout << "Ingrese un dado por favor" << endl;
+      cin >> respuesta;
+   }
+   int tamanioRespuesta = sizeof(respuesta) / sizeof(respuesta[0]);
+   cout << "Tamanio de respuesta: " << tamanioRespuesta << endl;
+   if (sizeof(respuesta) == 1)
+   {
+      int respuestaInt = atoi(respuesta);
+
+      if (respuestaInt > 5 || respuestaInt < 1)
+      {
+         cout << "Ingrese un dado valido por favor" << endl;
+         cin >> respuesta;
+      }
+      juego[respuestaInt - 1] = rand() % 6 + 1;
+      displayDice(juego[respuestaInt - 1]);
+   }
+   else
+   {
+      for (int i = 0; i < 10; i++)
+      {
+         if (respuesta[i] == ',')
+         {
+            juego[i - 1] = rand() % 6 + 1;
+            displayDice(juego[i - 1]);
+         }
+      }
+   }
+}
+
+int tirar(int juego[])
+{
+   int tiradas = 0;
+   char respuesta;
+   tirarUnaVez(juego);
+   tiradas++;
+   while (tiradas < 3)
+   {
+      cout << "Desea tirar de nuevo? (s/n): ";
+      cin >> respuesta;
+      if (respuesta != 's' && respuesta != 'n')
+      {
+         cout << "Ingrese una respuesta valida por favor" << endl;
+         cin >> respuesta;
+      }
+      if (respuesta == 's')
+      {
+         tirarDeNuevo(juego);
+         tiradas++;
+      }
+      else
+      {
+         break;
+      }
+   }
+   return tiradas;
 }
