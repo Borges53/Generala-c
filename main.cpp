@@ -8,12 +8,8 @@ using namespace std;
 
 int main()
 {
-     //Se muestra un mensaje por pantalla.
-    cout << "Hola Mundo" << suma(1,2) << "\n";
+    // Se muestra un mensaje por pantalla.
+    cout << "Hola Mundo" << multiplicacion(3, 2) << "\n";
 
     return 0;
 }
-
-
-
-
