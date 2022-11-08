@@ -8,12 +8,9 @@ using namespace std;
 
 int main()
 {
-     //Se muestra un mensaje por pantalla.
-    cout << "Hola Mundo" << suma(1,2) << "\n";
+    int juego[5];
+
+    tirar(juego);
 
     return 0;
 }
-
-
-
-
