@@ -12,9 +12,17 @@ using namespace std;
 int getWinner(Combinacion[][ROUNDS]);
 void showResults(Combinacion[][ROUNDS], int);
 
+struct info
+{
+    int id_jugada;
+    char nombre_jugador[20 + 1];
+    int fecha;
+    int puntaje;
+};
+
 int main()
 {
-    int game[5];
+    int juego[5];
     int jugadores = 1;
 
     Combinacion results[jugadores][ROUNDS];
@@ -25,8 +33,13 @@ int main()
 
     for (int i = 0; i < 1; i++)
     {
-        //tirar(game);
-        results[i][actualRound] = jugar(game);
+        tirar(juego);
+        cout << "GAME ACTUALIZADO: " << endl;
+        for (int j = 0; j < 5; j++)
+        {
+            cout << juego[j] << endl;
+        }
+        results[i][actualRound] = jugar(juego);
         actualPlayer++;
         if (actualPlayer == jugadores)
         {
@@ -39,24 +52,13 @@ int main()
     showResults(results, jugadores);
 
     // Save Results  :  ACA VA LA LOGICA DE GUARDAR LOS RESULTADOS EN UN ARCHIVO
-    /*FILE* f= fopen("JUGADAS.dat","wb+");	
-	cargarArchivo(f,results,jugadores); 
+    FILE *f = fopen("JUGADAS.dat", "wb+");
+    cargarArchivo(f, results, jugadores);
 
-    cout << "El ganador es el jugador " << winner << endl;  */
+    cout << "El ganador es el jugador " << winner << endl;
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 void showResults(Combinacion results[][ROUNDS], int jugadores)
 {

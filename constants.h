@@ -4,7 +4,6 @@
 const int DICES = 5;
 const int ROUNDS = 11;
 
-
 const int COMB_1 = 1;
 const int COMB_2 = 2;
 const int COMB_3 = 3;
@@ -30,6 +29,7 @@ const int VALUE_GENERALA_DOBLE = 100;
 const int COMB_GENERALA_SERVIDA = 12;
 const int COMB_NADA = 0;
 
+const int MAX_TIRADAS = 3;
 
 struct Combinacion
 {
@@ -42,12 +42,12 @@ struct nodoCombinacion
     Combinacion dato;
     nodoCombinacion *sig;
 };
-struct Info{
-	
-	int id_jugada;
-	char nombre_jugador[20+1];
-	int fecha;
-	int puntaje;
+struct Info
+{
+    int id_jugada;
+    char nombre_jugador[20 + 1];
+    int fecha;
+    int puntaje;
 };
 
 #endif // a_H
