@@ -28,10 +28,6 @@ int main()
         cout << "Turno del jugador " << actualPlayer + 1 << ": " << endl;
 
         tirar(juego);
-        for (int j = 0; j < 5; j++)
-        {
-            cout << juego[j] << endl;
-        }
         results[actualPlayer][actualRound] = jugar(juego);
 
         if (actualPlayer == jugadores - 1)

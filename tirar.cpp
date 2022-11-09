@@ -151,6 +151,5 @@ int tirar(int juego[])
          termino = true;
       }
    }
-   cout << "Termino de tirar" << endl;
    return tiradas;
 }
