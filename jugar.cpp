@@ -52,6 +52,13 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista)
         aux1 = aux1->sig;
     }
     comb = aux1->dato;
+    
+    cout << "----------------------------" << endl;
+    cout << "Combinacion elegida: " << endl;
+    cout << "Nombre: " << comb.nombre << endl;
+    cout << "Puntos: " << comb.puntos << endl;
+    cout << "Tipo: " << comb.tipo << endl;
+    cout << "----------------------------" << endl;
 
     return comb;
 }
