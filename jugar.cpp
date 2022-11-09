@@ -3,32 +3,11 @@
 #include <cstdlib>
 #include <ctime>
 #include <stdio.h>
+#include "constants.h"
 
 using namespace std;
 
-const int CANTIDAD = 5;
 
-const int COMB_1 = 1;
-const int COMB_2 = 2;
-const int COMB_3 = 3;
-const int COMB_4 = 4;
-const int COMB_5 = 5;
-const int COMB_6 = 6;
-const int COMB_ESCALERA = 7;
-const int COMB_FULL = 8;
-const int COMB_POKER = 9;
-const int COMB_GENERALA = 10;
-const int COMB_GENERALA_DOBLE = 11;
-const int COMB_GENERALA_SERVIDA = 12;
-const int COMB_NADA = 0;
-
-struct Combinacion
-{
-    int id;
-    int puntos;
-    int tipo;
-    int numero;
-};
 
 // crear estructura lista de combinaciones
 
@@ -62,7 +41,7 @@ void insertarNodoLista(nodoCombinacion *&lista, Combinacion dato)
     cout << "El dato se ha insertado" << endl;
 }
 
-int jugar(int juego[])
+Combinacion jugar(int juego[])
 {
     cout << "Jugando..." << endl;
     obtenerCombinacion(juego);
@@ -72,7 +51,7 @@ int jugar(int juego[])
 int obtenerCombinacion(int juego[])
 {
     int repetidos[6] = {0, 0, 0, 0, 0, 0};
-    int aux[CANTIDAD] = {1, 1, 2, 2, 2};
+    int aux[DICES] = {1, 1, 2, 2, 2};
     // crear lista de combinacion
     nodoCombinacion *lista = NULL;
 
@@ -87,7 +66,6 @@ int obtenerCombinacion(int juego[])
     {
         cout << "generala" << endl;
         Combinacion comb;
-        comb.id = 1;
         comb.puntos = 50;
         comb.tipo = COMB_GENERALA;
         comb.numero = 0;
@@ -100,7 +78,6 @@ int obtenerCombinacion(int juego[])
     {
         cout << "poker" << endl;
         Combinacion comb;
-        comb.id = 2;
         comb.puntos = 40;
         comb.tipo = COMB_POKER;
         comb.numero = 0;
@@ -114,7 +91,6 @@ int obtenerCombinacion(int juego[])
     {
         cout << "full" << endl;
         Combinacion comb;
-        comb.id = 3;
         comb.puntos = 30;
         comb.tipo = COMB_FULL;
         comb.numero = 0;
@@ -129,7 +105,6 @@ int obtenerCombinacion(int juego[])
     while (aux1 != NULL)
     {
         cout << "ENTRE AL WHILE" << endl;
-        cout << "ID: " << aux1->dato.id << endl;
         cout << "Puntos: " << aux1->dato.puntos << endl;
         cout << "Tipo: " << aux1->dato.tipo << endl;
         cout << "Numero: " << aux1->dato.numero << endl;
