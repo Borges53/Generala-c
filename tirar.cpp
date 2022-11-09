@@ -3,6 +3,8 @@
 #include <cstdlib>
 #include <ctime>
 #include <stdio.h>
+#include <conio.h>
+#include <string.h>
 
 using namespace std;
 
@@ -72,6 +74,7 @@ void tirarDeNuevo(int juego[])
 {
    // Tirar de nuevo ciertos dados y actualizar el array
    char respuesta[10 + 1];
+   int i = 0;
    srand(time(NULL));
 
    cout << "Que dado/s desea volver a tirar? (Ingrese 1,2,3 si desea volver a tirar el dado 1, 2 y 3 respectivamente)" << endl;
@@ -82,12 +85,12 @@ void tirarDeNuevo(int juego[])
       cout << "Ingrese un dado por favor" << endl;
       cin >> respuesta;
    }
-   int tamanioRespuesta = sizeof(respuesta) / sizeof(respuesta[0]);
-   cout << "Tamanio de respuesta: " << tamanioRespuesta << endl;
-   if (sizeof(respuesta) == 1)
+   int lenghtRespuesta = strlen(respuesta);
+   cout << "Tamanio de respuesta: " << lenghtRespuesta << endl;
+   if (lenghtRespuesta == 1)
    {
-      int respuestaInt = atoi(respuesta);
-
+      // convert entire char to int
+      int respuestaInt = respuesta[0] - '0';
       if (respuestaInt > 5 || respuestaInt < 1)
       {
          cout << "Ingrese un dado valido por favor" << endl;
@@ -98,13 +101,20 @@ void tirarDeNuevo(int juego[])
    }
    else
    {
-      for (int i = 0; i < 10; i++)
+      while (respuesta[i] != NULL)
       {
-         if (respuesta[i] == ',')
+         if (respuesta[i] != ',')
          {
-            juego[i - 1] = rand() % 6 + 1;
-            displayDice(juego[i - 1]);
+            int respuestaInt = respuesta[i] - '0';
+            if (respuestaInt > 5 || respuestaInt < 1)
+            {
+               cout << "Ingrese un dado valido por favor" << endl;
+               cin >> respuesta;
+            }
+            juego[respuestaInt - 1] = rand() % 6 + 1;
+            displayDice(juego[respuestaInt - 1]);
          }
+         i++;
       }
    }
 }
