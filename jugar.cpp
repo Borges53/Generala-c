@@ -9,7 +9,6 @@ using namespace std;
 
 Combinacion jugar(int juego[])
 {
-    cout << "Jugando..." << endl;
     nodoCombinacion *lista = NULL;
     obtenerCombinacion(juego, lista);
 
@@ -71,10 +70,10 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
 
     obtenerRepeticiones(juego, repetidos);
 
-    for (int i = 0; i < 6; i++)
+    /* for (int i = 0; i < 6; i++)
     {
         cout << "Repeticiones de " << i + 1 << ": " << repetidos[i] << endl;
-    }
+    } */
 
     // GENERALA
     if (existeCombinacion(repetidos, 5))
@@ -236,5 +235,5 @@ void insertarNodoLista(nodoCombinacion *&lista, Combinacion dato)
         aux2->sig = nuevoNodo;
         nuevoNodo->sig = aux1;
     }
-    cout << "El dato se ha insertado" << endl;
+ //   cout << "El dato se ha insertado" << endl;
 }

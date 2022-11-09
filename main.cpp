@@ -25,8 +25,9 @@ int main()
 
     for (int i = 0; i < turns; i++)
     {
+        cout << "Turno del jugador " << actualPlayer + 1 << ": " << endl;
+
         tirar(juego);
-        cout << "GAME ACTUALIZADO: " << endl;
         for (int j = 0; j < 5; j++)
         {
             cout << juego[j] << endl;
