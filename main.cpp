@@ -9,16 +9,8 @@
 
 using namespace std;
 
-int getWinner(Combinacion[][ROUNDS],int);
+int getWinner(Combinacion[][ROUNDS], int);
 void showResults(Combinacion[][ROUNDS], int);
-
-struct info
-{
-    int id_jugada;
-    char nombre_jugador[20 + 1];
-    int fecha;
-    int puntaje;
-};
 
 int main()
 {
@@ -48,12 +40,12 @@ int main()
         }
     }
 
-    int winner = getWinner(results,jugadores);
+    int winner = getWinner(results, jugadores);
     showResults(results, jugadores);
 
     // Save Results  :  ACA VA LA LOGICA DE GUARDAR LOS RESULTADOS EN UN ARCHIVO
-   /* FILE *f = fopen("JUGADAS.dat", "wb+");
-    cargarArchivo(f, results, jugadores);*/
+    /* FILE *f = fopen("JUGADAS.dat", "wb+");
+     cargarArchivo(f, results, jugadores);*/
 
     cout << "El ganador es el jugador " << winner << endl;
 

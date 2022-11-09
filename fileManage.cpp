@@ -3,7 +3,7 @@
 #include <fstream>
 #include "constants.h"
 
-void cargarArchivo(FILE *f, Combinacion matriz[][ROUNDS], int n)
+/* void cargarArchivo(FILE *f, Combinacion matriz[][ROUNDS], int n)
 {
 	// ACA VA LA LOGICA DE CARGAR
 	int i = 0;
@@ -16,4 +16,4 @@ void cargarArchivo(FILE *f, Combinacion matriz[][ROUNDS], int n)
 
 	fwrite(&variable, sizeof(info), 1, f);
 	fclose(f);
-}
+} */
