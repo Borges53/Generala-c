@@ -24,7 +24,7 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista)
     Combinacion comb;
 
     cout << "Elegi una combinacion: " << endl;
-    int aux = 0;
+    int aux = 1;
     int indexComb;
     while (aux1 != NULL)
     {
@@ -40,14 +40,14 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista)
 
     indexComb = -1;
 
-    while (indexComb <= 0 || indexComb > aux)
+    while (indexComb <= 1 || indexComb > aux)
     {
         cout << "Elegi una combinacion: " << endl;
         cin >> indexComb;
     }
 
     aux1 = lista;
-    for (int i = 0; i < indexComb; i++)
+    for (int i = 0; i < indexComb + 1; i++)
     {
         aux1 = aux1->sig;
     }
