@@ -2,7 +2,7 @@
 #define constants_H
 
 const int DICES = 5;
-const int ROUNDS = 11;
+const int ROUNDS = 2;
 
 const int COMB_1 = 1;
 const int COMB_2 = 2;

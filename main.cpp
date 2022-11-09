@@ -23,7 +23,7 @@ int main()
     int actualPlayer = 0;
     int actualRound = 0;
 
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < turns; i++)
     {
         tirar(juego);
         cout << "GAME ACTUALIZADO: " << endl;
@@ -31,13 +31,14 @@ int main()
         {
             cout << juego[j] << endl;
         }
-        results[i][actualRound] = jugar(juego);
-        actualPlayer++;
-        if (actualPlayer == jugadores)
+        results[actualPlayer][actualRound] = jugar(juego);
+
+        if (actualPlayer == jugadores - 1)
         {
             actualPlayer = 0;
             actualRound++;
         }
+        actualPlayer++;
     }
 
     int winner = getWinner(results, jugadores);
@@ -60,7 +61,7 @@ void showResults(Combinacion results[][ROUNDS], int jugadores)
     {
         for (int j = 0; j < ROUNDS; j++)
         {
-            cout << "Jugador " << i << " Ronda " << j << " Puntos: " << results[i][j].puntos << endl;
+            cout << "Jugador " << i + 1 << " Ronda " << j + 1 << " Puntos: " << results[i][j].puntos << endl;
         }
     }
 }
