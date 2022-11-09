@@ -15,7 +15,7 @@ void showResults(Combinacion[][ROUNDS], int);
 int main()
 {
     int juego[5];
-    int jugadores = 1;
+    int jugadores = 2;
 
     Combinacion results[jugadores][ROUNDS];
 
@@ -25,12 +25,9 @@ int main()
 
     for (int i = 0; i < turns; i++)
     {
+        cout << "Turno del jugador " << actualPlayer + 1 << ": " << endl;
+
         tirar(juego);
-        cout << "GAME ACTUALIZADO: " << endl;
-        for (int j = 0; j < 5; j++)
-        {
-            cout << juego[j] << endl;
-        }
         results[actualPlayer][actualRound] = jugar(juego);
 
         if (actualPlayer == jugadores - 1)
@@ -38,7 +35,10 @@ int main()
             actualPlayer = 0;
             actualRound++;
         }
-        actualPlayer++;
+        else
+        {
+            actualPlayer++;
+        }
     }
 
     int winner = getWinner(results, jugadores);
@@ -48,7 +48,7 @@ int main()
     /* FILE *f = fopen("JUGADAS.dat", "wb+");
      cargarArchivo(f, results, jugadores);*/
 
-    cout << "El ganador es el jugador " << winner << endl;
+    cout << "El ganador es el jugador " << winner + 1 << "!!" << endl;
 
     return 0;
 }
