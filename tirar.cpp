@@ -101,7 +101,7 @@ void tirarDeNuevo(int juego[])
    }
    else
    {
-      while (respuesta[i] != NULL)
+      while (respuesta[i] != '\0')
       {
          if (respuesta[i] != ',')
          {
