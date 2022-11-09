@@ -10,17 +10,58 @@ using namespace std;
 Combinacion jugar(int juego[])
 {
     cout << "Jugando..." << endl;
-    Combinacion comb = obtenerCombinacion(juego);
+    nodoCombinacion *lista = NULL;
+    obtenerCombinacion(juego, lista);
+
+    Combinacion comb = seleccionarCombinacion(lista);
+
+    return comb;
+}
+
+Combinacion seleccionarCombinacion(nodoCombinacion *&lista)
+{
+    nodoCombinacion *aux1 = lista;
+    Combinacion comb;
+
+    cout << "Elegi una combinacion: " << endl;
+    int aux = 0;
+    int indexComb;
+    while (aux1 != NULL)
+    {
+
+        cout << "[" << aux << "] " << aux1->dato.nombre << endl;
+        cout << "Puntos: " << aux1->dato.puntos << endl;
+        cout << "Tipo: " << aux1->dato.tipo << endl;
+        cout << "----------------------------" << endl;
+
+        aux++;
+        aux1 = aux1->sig;
+    }
+
+    indexComb = -1;
+
+    while (indexComb >= 0 && indexComb < aux)
+    {
+        cout << "Elegi una combinacion: " << endl;
+        cin >> indexComb;
+    }
+
+    aux1 = lista;
+    for (int i = 0; i < indexComb; i++)
+    {
+        aux1 = aux1->sig;
+    }
+    comb = aux1->dato;
+
     return comb;
 }
 
 // obtener combinaciones de generala
-Combinacion obtenerCombinacion(int juego[])
+Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
 {
     int repetidos[6] = {0, 0, 0, 0, 0, 0};
-    int aux[DICES] = {1, 2, 3, 4, 5};
+    int aux[DICES] = {2, 3, 3, 3, 3};
     // crear lista de combinacion
-    nodoCombinacion *lista = NULL;
 
     obtenerRepeticiones(aux, repetidos);
 
@@ -35,6 +76,7 @@ Combinacion obtenerCombinacion(int juego[])
         Combinacion comb;
         comb.puntos = VALUE_GENERALA;
         comb.tipo = COMB_GENERALA;
+        strcpy(comb.nombre, "Generala");
 
         insertarNodoLista(lista, comb);
     }
@@ -45,6 +87,7 @@ Combinacion obtenerCombinacion(int juego[])
         Combinacion comb;
         comb.puntos = VALUE_POKER;
         comb.tipo = COMB_POKER;
+        strcpy(comb.nombre, "Poker");
 
         insertarNodoLista(lista, comb);
     }
@@ -55,6 +98,7 @@ Combinacion obtenerCombinacion(int juego[])
         Combinacion comb;
         comb.puntos = 30;
         comb.tipo = VALUE_FULL;
+        strcpy(comb.nombre, "Full");
 
         insertarNodoLista(lista, comb);
     }
@@ -64,18 +108,42 @@ Combinacion obtenerCombinacion(int juego[])
         Combinacion comb;
         comb.puntos = VALUE_ESCALERA;
         comb.tipo = COMB_ESCALERA;
+        strcpy(comb.nombre, "Escalera");
 
         insertarNodoLista(lista, comb);
     }
 
-    // Recorrer la lista
-    nodoCombinacion *aux1 = lista;
+    // Recorrer repetidos y revisar cuales tienen 2 o 3 repeticiones
 
-    while (aux1 != NULL)
+    for (int i = 0; i < 6; i++)
     {
-        cout << "Puntos: " << aux1->dato.puntos << endl;
-        cout << "Tipo: " << aux1->dato.tipo << endl;
-        aux1 = aux1->sig;
+        if (repetidos[i] == 3)
+        {
+            Combinacion comb;
+            comb.puntos = (i + 1) * 3;
+            comb.tipo = i + 1;
+            strcpy(comb.nombre, "Tercia");
+
+            insertarNodoLista(lista, comb);
+        }
+        else if (repetidos[i] == 2)
+        {
+            Combinacion comb;
+            comb.puntos = (i + 1) * 2;
+            comb.tipo = i + 1;
+            strcpy(comb.nombre, "Doble");
+
+            insertarNodoLista(lista, comb);
+        }
+        else if (repetidos[i] == 1)
+        {
+            Combinacion comb;
+            comb.puntos = i + 1;
+            comb.tipo = i + 1;
+            strcpy(comb.nombre, "Unica");
+
+            insertarNodoLista(lista, comb);
+        }
     }
 }
 
@@ -111,7 +179,7 @@ bool isStairway(int juego[DICES])
 
     bool result = isAscendant || isDescendant;
 
-    return  result;
+    return result;
 }
 
 int obtenerRepeticiones(int juego[], int repeticiones[])
