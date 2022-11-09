@@ -89,6 +89,7 @@ int getWinner(Combinacion results[][ROUNDS])
             winnerPoints = actualPoints;
             winner = i;
         }
+        actualPoints = 0;
     }
 
     return winner;
