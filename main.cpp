@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <ctime>
 #include "tirar.h"
+#include "jugar.h"
 
 using namespace std;
 
@@ -18,6 +19,7 @@ int main()
     //[6] = Escalera - [7] = Full - [8] = Poker - [9] = Generala - [10] = Generala Doble
 
     tirar(juego);
+    jugar(juego);
 
     return 0;
 }
