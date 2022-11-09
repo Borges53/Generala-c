@@ -40,7 +40,7 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista)
 
     indexComb = -1;
 
-    while (indexComb <= 1 || indexComb > aux)
+    while (indexComb < 0 || indexComb > aux)
     {
         cout << "Elegi una combinacion: " << endl;
         cin >> indexComb;
