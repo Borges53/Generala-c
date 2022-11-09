@@ -47,12 +47,12 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista)
     }
 
     aux1 = lista;
-    for (int i = 0; i < indexComb + 1; i++)
+    for (int i = 0; i < indexComb - 1; i++)
     {
         aux1 = aux1->sig;
     }
     comb = aux1->dato;
-    
+
     cout << "----------------------------" << endl;
     cout << "Combinacion elegida: " << endl;
     cout << "Nombre: " << comb.nombre << endl;
