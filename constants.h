@@ -35,6 +35,7 @@ struct Combinacion
 {
     int puntos;
     int tipo;
+    char nombre[20];
 };
 
 struct nodoCombinacion

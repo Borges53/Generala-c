@@ -35,7 +35,7 @@ int main()
         }
     }
 
-    int winner = getWinner(results);
+    int winner = getWinner(results,jugadores);
     showResults(results, jugadores);
 
     // Save Results  :  ACA VA LA LOGICA DE GUARDAR LOS RESULTADOS EN UN ARCHIVO
@@ -71,16 +71,16 @@ void showResults(Combinacion results[][ROUNDS], int jugadores)
     }
 }
 
-int getWinner(Combinacion results[][ROUNDS])
+int getWinner(Combinacion results[][ROUNDS], int jugadores)
 {
     // REVISAR ESTO
     int winner = 0;
     int winnerPoints = 0;
     int actualPoints = 0;
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < jugadores; i++)
     {
-        for (int j = 0; j < 11; j++)
+        for (int j = 0; j < 1; j++)
         {
             actualPoints += results[i][j].puntos;
         }
