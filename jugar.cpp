@@ -60,10 +60,9 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista)
 Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
 {
     int repetidos[6] = {0, 0, 0, 0, 0, 0};
-    int aux[DICES] = {2, 3, 3, 3, 3};
     // crear lista de combinacion
 
-    obtenerRepeticiones(aux, repetidos);
+    obtenerRepeticiones(juego, repetidos);
 
     for (int i = 0; i < 6; i++)
     {
@@ -103,7 +102,7 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
         insertarNodoLista(lista, comb);
     }
 
-    if (isStairway(aux))
+    if (isStairway(juego))
     {
         Combinacion comb;
         comb.puntos = VALUE_ESCALERA;

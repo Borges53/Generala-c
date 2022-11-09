@@ -7,7 +7,7 @@ void cargarArchivo(FILE *f, Combinacion matriz[][ROUNDS], int n)
 {
 	// ACA VA LA LOGICA DE CARGAR
 	int i = 0;
-	info variable;
+	Info variable;
 	while (i < n)
 	{
 		// carga de datos
