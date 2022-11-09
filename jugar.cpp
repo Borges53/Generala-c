@@ -18,7 +18,6 @@ Combinacion jugar(int juego[])
     return comb;
 }
 
-
 Combinacion seleccionarCombinacion(nodoCombinacion *&lista)
 {
     nodoCombinacion *aux1 = lista;
@@ -30,7 +29,7 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista)
     while (aux1 != NULL)
     {
 
-        cout <<"[" << aux << "] " <<aux1->dato.nombre << endl;
+        cout << "[" << aux << "] " << aux1->dato.nombre << endl;
         cout << "Puntos: " << aux1->dato.puntos << endl;
         cout << "Tipo: " << aux1->dato.tipo << endl;
         cout << "----------------------------" << endl;
@@ -39,16 +38,20 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista)
         aux1 = aux1->sig;
     }
 
-    indexComb = 0;
+    indexComb = -1;
 
-    if(indexComb >= 0 && indexComb < aux){
-        aux1 = lista;
-        for (int i = 0; i < indexComb; i++)
-        {
-            aux1 = aux1->sig;
-        }
-        comb = aux1->dato;
+    while (indexComb >= 0 && indexComb < aux)
+    {
+        cout << "Elegi una combinacion: " << endl;
+        cin >> indexComb;
     }
+
+    aux1 = lista;
+    for (int i = 0; i < indexComb; i++)
+    {
+        aux1 = aux1->sig;
+    }
+    comb = aux1->dato;
 
     return comb;
 }
@@ -73,7 +76,7 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
         Combinacion comb;
         comb.puntos = VALUE_GENERALA;
         comb.tipo = COMB_GENERALA;
-        strcpy( comb.nombre, "Generala" );
+        strcpy(comb.nombre, "Generala");
 
         insertarNodoLista(lista, comb);
     }
@@ -84,7 +87,7 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
         Combinacion comb;
         comb.puntos = VALUE_POKER;
         comb.tipo = COMB_POKER;
-        strcpy( comb.nombre, "Poker" );
+        strcpy(comb.nombre, "Poker");
 
         insertarNodoLista(lista, comb);
     }
@@ -95,7 +98,7 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
         Combinacion comb;
         comb.puntos = 30;
         comb.tipo = VALUE_FULL;
-        strcpy( comb.nombre, "Full" );
+        strcpy(comb.nombre, "Full");
 
         insertarNodoLista(lista, comb);
     }
@@ -105,7 +108,7 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
         Combinacion comb;
         comb.puntos = VALUE_ESCALERA;
         comb.tipo = COMB_ESCALERA;
-        strcpy( comb.nombre, "Escalera" );
+        strcpy(comb.nombre, "Escalera");
 
         insertarNodoLista(lista, comb);
     }
@@ -119,7 +122,7 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
             Combinacion comb;
             comb.puntos = (i + 1) * 3;
             comb.tipo = i + 1;
-            strcpy( comb.nombre, "Tercia" );
+            strcpy(comb.nombre, "Tercia");
 
             insertarNodoLista(lista, comb);
         }
@@ -128,7 +131,7 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
             Combinacion comb;
             comb.puntos = (i + 1) * 2;
             comb.tipo = i + 1;
-            strcpy( comb.nombre, "Doble" );
+            strcpy(comb.nombre, "Doble");
 
             insertarNodoLista(lista, comb);
         }
@@ -137,12 +140,11 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
             Combinacion comb;
             comb.puntos = i + 1;
             comb.tipo = i + 1;
-            strcpy( comb.nombre, "Unica" );
+            strcpy(comb.nombre, "Unica");
 
             insertarNodoLista(lista, comb);
         }
     }
-
 }
 
 bool isStairway(int juego[DICES])
