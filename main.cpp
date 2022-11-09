@@ -74,7 +74,7 @@ int getWinner(Combinacion results[][ROUNDS], int jugadores)
 
     for (int i = 0; i < jugadores; i++)
     {
-        for (int j = 0; j < 1; j++)
+        for (int j = 0; j < ROUNDS; j++)
         {
             actualPoints += results[i][j].puntos;
         }
