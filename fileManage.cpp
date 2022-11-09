@@ -5,6 +5,7 @@
 
 /* void cargarArchivo(FILE *f, Combinacion matriz[][ROUNDS], int n)
 {
+	/*
 	// ACA VA LA LOGICA DE CARGAR
 	int i = 0;
 	Info variable;
