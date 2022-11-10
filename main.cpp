@@ -18,6 +18,7 @@ int main()
     int jugadores = 2;
 
     Combinacion results[jugadores][ROUNDS];
+    char nombreJugadores[jugadores][20] = {"Juan", "Pedro"};
 
     int turns = jugadores * ROUNDS;
     int actualPlayer = 0;
@@ -45,10 +46,14 @@ int main()
     showResults(results, jugadores);
 
     // Save Results  :  ACA VA LA LOGICA DE GUARDAR LOS RESULTADOS EN UN ARCHIVO
-    /* FILE *f = fopen("JUGADAS.dat", "wb+");
-     cargarArchivo(f, results, jugadores);*/
+    FILE *f = fopen("JUGADAS.dat", "a+");
+    cargarArchivo(f, results, jugadores,nombreJugadores);
+    fclose(f);
+    
 
     cout << "El ganador es el jugador " << winner + 1 << "!!" << endl;
+
+    system("pause");
 
     return 0;
 }
