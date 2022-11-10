@@ -46,10 +46,8 @@ int main()
     showResults(results, jugadores);
 
     // Save Results  :  ACA VA LA LOGICA DE GUARDAR LOS RESULTADOS EN UN ARCHIVO
-    FILE *f = fopen("JUGADAS.dat", "a+");
-    cargarArchivo(f, results, jugadores,nombreJugadores);
-    fclose(f);
-    
+    FILE *f = fopen("jugadas.dat", "a+");
+    cargarArchivo(f, results, jugadores, nombreJugadores);
 
     cout << "El ganador es el jugador " << winner + 1 << "!!" << endl;
 

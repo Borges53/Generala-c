@@ -18,18 +18,4 @@
 			fwrite(&variable, sizeof(Info), 1, f);
 		}
 	}
-
-    fseek(f, sizeof(Info), SEEK_END);
-    fread(&variable, sizeof(Info), 1, f);
-    cout << variable.nombre_jugador << " " << variable.puntaje << endl;
-
-    cout << "______________________________ " << endl;
-    while (!feof(f))
-    {
-        Info variable;
-        fread(&variable, sizeof(Info), 1, f);
-        cout << variable.nombre_jugador << " " << variable.puntaje << endl;
-        cout << "______________________________ " << endl;
-    }
-
 } 
