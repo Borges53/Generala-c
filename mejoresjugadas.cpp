@@ -66,11 +66,11 @@ void mostrarTop3 (nodo *lista) {
     while (actual != NULL && i < 3){
         cout << "jugador con el puesto " << i+1 << " historico es: " << endl;
 
-        cout << "Jugador: " << actual -> dato.nombre_jugador << endl ;
+        cout << "Nombre: " << actual -> dato.nombre_jugador << endl ;
 
-        cout << "El día: " << actual -> dato.fecha << endl ;
+        cout << "El dia: " << actual -> dato.fecha << endl ;
         
-        cout << "Con el puntaje" << actual -> dato.puntaje << endl ;
+        cout << "Con el puntaje: " << actual -> dato.puntaje << endl ;
 
         i++;
     }
