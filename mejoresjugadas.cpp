@@ -73,6 +73,8 @@ void mostrarTop3 (nodo *lista) {
         cout << "Con el puntaje: " << actual -> dato.puntaje << endl ;
 
         i++;
-    }
+    
     actual = actual -> sig;
+    }
+   
 }
