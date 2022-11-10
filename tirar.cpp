@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <conio.h>
 #include <string.h>
+#include "constants.h"
 
 using namespace std;
 
@@ -86,7 +87,6 @@ void tirarDeNuevo(int juego[])
       cin >> respuesta;
    }
    int lenghtRespuesta = strlen(respuesta);
-   cout << "Tamanio de respuesta: " << lenghtRespuesta << endl;
    if (lenghtRespuesta == 1)
    {
       // convert entire char to int
@@ -97,7 +97,10 @@ void tirarDeNuevo(int juego[])
          cin >> respuesta;
       }
       juego[respuestaInt - 1] = rand() % 6 + 1;
-      displayDice(juego[respuestaInt - 1]);
+      for (int i = 0; i < 5; i++)
+      {
+         displayDice(juego[i]);
+      }
    }
    else
    {
@@ -112,20 +115,24 @@ void tirarDeNuevo(int juego[])
                cin >> respuesta;
             }
             juego[respuestaInt - 1] = rand() % 6 + 1;
-            displayDice(juego[respuestaInt - 1]);
+            cout << "Volviendo a tirar dado " << respuestaInt << "..." << endl;
          }
          i++;
+      }
+      for (int i = 0; i < 5; i++)
+      {
+         displayDice(juego[i]);
       }
    }
 }
 
 int tirar(int juego[])
 {
-   int tiradas = 0;
+   int tiradas = 1;
    char respuesta;
    tirarUnaVez(juego);
-   tiradas++;
-   while (tiradas < 3)
+   bool termino = false;
+   while (tiradas < MAX_TIRADAS && !termino)
    {
       cout << "Desea tirar de nuevo? (s/n): ";
       cin >> respuesta;
@@ -141,7 +148,7 @@ int tirar(int juego[])
       }
       else
       {
-         break;
+         termino = true;
       }
    }
    return tiradas;

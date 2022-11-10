@@ -9,13 +9,13 @@
 
 using namespace std;
 
-int getWinner(Combinacion[][ROUNDS]);
+int getWinner(Combinacion[][ROUNDS], int);
 void showResults(Combinacion[][ROUNDS], int);
 
 int main()
 {
-    int game[5];
-    int jugadores = 1;
+    int juego[5];
+    int jugadores = 2;
 
     Combinacion results[jugadores][ROUNDS];
 
@@ -23,40 +23,35 @@ int main()
     int actualPlayer = 0;
     int actualRound = 0;
 
-    for (int i = 0; i < 1; i++)
+    for (int i = 0; i < turns; i++)
     {
-        //tirar(game);
-        results[i][actualRound] = jugar(game);
-        actualPlayer++;
-        if (actualPlayer == jugadores)
+        cout << "Turno del jugador " << actualPlayer + 1 << ": " << endl;
+
+        tirar(juego);
+        results[actualPlayer][actualRound] = jugar(juego);
+
+        if (actualPlayer == jugadores - 1)
         {
             actualPlayer = 0;
             actualRound++;
         }
+        else
+        {
+            actualPlayer++;
+        }
     }
 
-    int winner = getWinner(results);
+    int winner = getWinner(results, jugadores);
     showResults(results, jugadores);
 
     // Save Results  :  ACA VA LA LOGICA DE GUARDAR LOS RESULTADOS EN UN ARCHIVO
-    /*FILE* f= fopen("JUGADAS.dat","wb+");	
-	cargarArchivo(f,results,jugadores); 
+    /* FILE *f = fopen("JUGADAS.dat", "wb+");
+     cargarArchivo(f, results, jugadores);*/
 
-    cout << "El ganador es el jugador " << winner << endl;  */
+    cout << "El ganador es el jugador " << winner + 1 << "!!" << endl;
 
     return 0;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 void showResults(Combinacion results[][ROUNDS], int jugadores)
 {
@@ -66,21 +61,21 @@ void showResults(Combinacion results[][ROUNDS], int jugadores)
     {
         for (int j = 0; j < ROUNDS; j++)
         {
-            cout << "Jugador " << i << " Ronda " << j << " Puntos: " << results[i][j].puntos << endl;
+            cout << "Jugador " << i + 1 << " Ronda " << j + 1 << " Puntos: " << results[i][j].puntos << endl;
         }
     }
 }
 
-int getWinner(Combinacion results[][ROUNDS])
+int getWinner(Combinacion results[][ROUNDS], int jugadores)
 {
     // REVISAR ESTO
     int winner = 0;
     int winnerPoints = 0;
     int actualPoints = 0;
 
-    for (int i = 0; i < 5; i++)
+    for (int i = 0; i < jugadores; i++)
     {
-        for (int j = 0; j < 11; j++)
+        for (int j = 0; j < ROUNDS; j++)
         {
             actualPoints += results[i][j].puntos;
         }
