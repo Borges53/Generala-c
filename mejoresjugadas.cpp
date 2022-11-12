@@ -23,7 +23,7 @@ void mostrarTop3 (nodo*);
     FILE * f =fopen("JUGADAS.dat", "rb");
     Info a;
     while (fread(&a, sizeof(Info) ,1,f )){
-        insertarOrdenado(lista, a);
+        insertarOrdenado(lista, a); //genera ranking total
     }
     fclose(f);
 

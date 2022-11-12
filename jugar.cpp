@@ -4,6 +4,7 @@
 #include <ctime>
 #include <stdio.h>
 #include "constants.h"
+#include <cstring>
 
 using namespace std;
 
