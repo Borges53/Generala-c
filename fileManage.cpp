@@ -3,18 +3,42 @@
 #include <fstream>
 #include "constants.h"
 
-/* void cargarArchivo(FILE *f, Combinacion matriz[][ROUNDS], int n)
+ void cargarArchivo(FILE *f, Combinacion matriz[][ROUNDS], int cantidadJugadores,char nombreJugadores[][20])
 {
-	/*
 	// ACA VA LA LOGICA DE CARGAR
 	int i = 0;
 	Info variable;
-	while (i < n)
+	int id;
+
+	// obtener ultima jugada y revisar si existe
+	fseek(f, -sizeof(Info), SEEK_END);
+	
+
+	// si existe la variable, tomar el id y sumarle 1
+
+	if (fread(&variable, sizeof(Info), 1, f) != NULL)
 	{
-		// carga de datos
-		i++;
+		cout << "Ultima jugada: " << variable.id_jugada << endl;
+		id = variable.id_jugada + 1;
+	}
+	else
+	{
+		id = 1;
 	}
 
-	fwrite(&variable, sizeof(info), 1, f);
-	fclose(f);
-} */
+	// Volver al inicio del archivo
+
+	fseek(f, 0, SEEK_SET);
+
+	for(int x = 0; x < cantidadJugadores; x++)
+	{
+		for(int y = 0; y < ROUNDS; y++)
+		{
+			strcpy(variable.nombre_jugador, nombreJugadores[x]);
+			variable.puntaje = matriz[x][y].puntos;
+			variable.id_jugada = id;
+			fwrite(&variable, sizeof(Info), 1, f);
+			id++;
+		}
+	}
+} 

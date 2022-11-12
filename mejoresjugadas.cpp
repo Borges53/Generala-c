@@ -14,7 +14,7 @@ struct nodo{
 
 nodo* insertarOrdenado(nodo*&, Info);
 
-void mostrarPrimerElementoLista (nodo*);
+void mostrarTop3 (nodo*);
 
 //tomar información de un archivo y ordenarlo mediante listas
  void mejoresJugadas (){
@@ -27,12 +27,7 @@ void mostrarPrimerElementoLista (nodo*);
     }
     fclose(f);
 
-    int i = 0;
-    while (i < 3){
-        cout << "jugador con el puesto " << i+1 << " historico es: " << endl;
-        mostrarPrimerElementoLista (lista);
-        i++;
-    }
+    mostrarTop3(lista);
 
     }
 
@@ -62,15 +57,24 @@ void mostrarPrimerElementoLista (nodo*);
     
 }
 
-void mostrarPrimerElementoLista (nodo *lista) {
+void mostrarTop3 (nodo *lista) {
     nodo* actual = new nodo();
     actual = lista;
-    while (actual != NULL){
-        cout << "Jugador: " << actual -> dato.nombre_jugador << endl ;
+    
+    int i = 0;
 
-        cout << "El día: " << actual -> dato.fecha << endl ;
+    while (actual != NULL && i < 3){
+        cout << "jugador con el puesto " << i+1 << " historico es: " << endl;
+
+        cout << "Nombre: " << actual -> dato.nombre_jugador << endl ;
+
+        cout << "El dia: " << actual -> dato.fecha << endl ;
         
-        cout << "Con el puntaje" << actual -> dato.puntaje << endl ;
-    }
+        cout << "Con el puntaje: " << actual -> dato.puntaje << endl ;
+
+        i++;
+    
     actual = actual -> sig;
+    }
+   
 }
