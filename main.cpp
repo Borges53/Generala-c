@@ -14,11 +14,14 @@ void showResults(Combinacion[][ROUNDS], int);
 
 int main()
 {
-    /* int juego[5];
+    int juego[5];
     int jugadores = 2;
 
     Combinacion results[jugadores][ROUNDS];
     char nombreJugadores[jugadores][20] = {"Juan", "Pedro"};
+
+    // matriz para ver si se ya se jugo una jugada // 0 = no jugo, 1 = jugo
+    int tableroJugadas[jugadores][MAX_POSIBLES_COMBINACIONES] = {0};
 
     int turns = jugadores * ROUNDS;
     int actualPlayer = 0;
@@ -29,7 +32,7 @@ int main()
         cout << "Turno del jugador " << actualPlayer + 1 << ": " << endl;
 
         tirar(juego);
-        results[actualPlayer][actualRound] = jugar(juego);
+        results[actualPlayer][actualRound] = jugar(juego, tableroJugadas, actualPlayer);
 
         if (actualPlayer == jugadores - 1)
         {
@@ -43,7 +46,7 @@ int main()
     }
 
     int winner = getWinner(results, jugadores);
-    showResults(results, jugadores); */
+    showResults(results, jugadores);
 
     // Save Results  :  ACA VA LA LOGICA DE GUARDAR LOS RESULTADOS EN UN ARCHIVO
     FILE *f = fopen("jugadas.dat", "r+");
@@ -51,7 +54,7 @@ int main()
     Info variable;
     while (fread(&variable, sizeof(Info), 1, f))
     {
-        cout << variable.nombre_jugador << " " << variable.puntaje  <<  " " << variable.id_jugada << endl;
+        cout << variable.nombre_jugador << " " << variable.puntaje << " " << variable.id_jugada << endl;
     }
     fclose(f);
 

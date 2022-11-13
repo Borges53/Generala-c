@@ -29,6 +29,8 @@ const int VALUE_GENERALA_DOBLE = 100;
 const int COMB_GENERALA_SERVIDA = 12;
 const int COMB_NADA = 0;
 
+const int MAX_POSIBLES_COMBINACIONES = 12;
+
 const int MAX_TIRADAS = 3;
 
 struct Combinacion

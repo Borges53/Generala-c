@@ -8,17 +8,18 @@
 
 using namespace std;
 
-Combinacion jugar(int juego[])
+Combinacion jugar(int juego[], int tableroJugadas[][MAX_POSIBLES_COMBINACIONES], int actualPlayer)
 {
     nodoCombinacion *lista = NULL;
     obtenerCombinacion(juego, lista);
 
     Combinacion comb = seleccionarCombinacion(lista);
+    tableroJugadas[actualPlayer][comb.tipo - 1] = 1; // guardar que ya se jugo esa jugada
 
     return comb;
 }
 
-Combinacion seleccionarCombinacion(nodoCombinacion *&lista)
+Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[][MAX_POSIBLES_COMBINACIONES], int actualPlayer)
 {
     nodoCombinacion *aux1 = lista;
     Combinacion comb;
@@ -28,21 +29,27 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista)
     int indexComb;
     while (aux1 != NULL)
     {
+        if (tableroJugadas[actualPlayer][aux1->dato.tipo - 1] == 0)
+        {
+            cout << "[" << aux << "] " << aux1->dato.nombre << endl;
+            cout << "Puntos: " << aux1->dato.puntos << endl;
+            cout << "Tipo: " << aux1->dato.tipo << endl;
+            cout << "----------------------------" << endl;
 
-        cout << "[" << aux << "] " << aux1->dato.nombre << endl;
-        cout << "Puntos: " << aux1->dato.puntos << endl;
-        cout << "Tipo: " << aux1->dato.tipo << endl;
-        cout << "----------------------------" << endl;
-
-        aux++;
-        aux1 = aux1->sig;
+            aux++;
+            aux1 = aux1->sig;
+        }
+        else
+        {
+            aux1 = aux1->sig;
+        }
     }
 
     indexComb = -1;
 
     while (indexComb < 0 || indexComb > aux)
     {
-        cout << "Elegi una combinacion: " << endl;
+        cout << "Selecciona una combinacion: " << endl;
         cin >> indexComb;
     }
 
@@ -70,11 +77,6 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
     // crear lista de combinacion
 
     obtenerRepeticiones(juego, repetidos);
-
-    /* for (int i = 0; i < 6; i++)
-    {
-        cout << "Repeticiones de " << i + 1 << ": " << repetidos[i] << endl;
-    } */
 
     // GENERALA
     if (existeCombinacion(repetidos, 5))
@@ -109,6 +111,7 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
         insertarNodoLista(lista, comb);
     }
 
+    // ESCALERA
     if (isStairway(juego))
     {
         Combinacion comb;
@@ -120,7 +123,6 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
     }
 
     // Recorrer repetidos y revisar cuales tienen 2 o 3 repeticiones
-
     for (int i = 0; i < 6; i++)
     {
         if (repetidos[i] == 3)
@@ -236,5 +238,4 @@ void insertarNodoLista(nodoCombinacion *&lista, Combinacion dato)
         aux2->sig = nuevoNodo;
         nuevoNodo->sig = aux1;
     }
- //   cout << "El dato se ha insertado" << endl;
 }
