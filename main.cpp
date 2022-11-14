@@ -28,7 +28,7 @@ int main()
     int actualPlayer = 0;
     int actualRound = 0;
 
-    int generalWin = 1;
+    int generalWin = 0;
 
     for (int i = 0; i < turns; i++)
     {
@@ -58,7 +58,7 @@ int main()
     if(generalWin == 1)
     {
         
-        cout << "El ganador es: " << nombreJugadores[actualPlayer] << endl;
+        cout << "El ganador es: " << nombreJugadores[actualPlayer] << " PORQUE SACO GENERALA PERO NO SE GUARDO EN EL ARCHIVO" << endl;
         return 0;
     }
 

@@ -36,9 +36,8 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[]
             cout << "Puntos: " << aux1->dato.puntos << endl;
             cout << "Tipo: " << aux1->dato.tipo << endl;
             cout << "----------------------------" << endl;
-
-            aux++;
             aux1 = aux1->sig;
+            aux++;
         }
         else
         {
@@ -51,7 +50,7 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[]
 
     indexComb = -1;
 
-    while (indexComb < 0 || indexComb > aux)
+    while (indexComb < 0 || indexComb >= aux)
     {
         cout << "Selecciona una combinacion: " << endl;
         cin >> indexComb;
