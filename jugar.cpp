@@ -27,7 +27,7 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[]
     cout << "Elegi una combinacion: " << endl;
     int aux = 1;
     int indexComb;
-    nodoCombinacion *aux2= NULL;
+    nodoCombinacion *aux2 = NULL;
     while (aux1 != NULL)
     {
         if (tableroJugadas[actualPlayer][aux1->dato.tipo - 1] == 0)
@@ -44,7 +44,6 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[]
             aux2 = aux1->sig;
             eliminarNodo(lista, aux1->dato.tipo);
             aux1 = aux2;
-
         }
     }
 
@@ -92,7 +91,7 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista, int general
         insertarNodoLista(lista, comb);
     }
 
-    if(generalaDoble == 1 && existeCombinacion(repetidos, 5))
+    if (generalaDoble == 1 && existeCombinacion(repetidos, 5))
     {
         Combinacion comb;
         comb.puntos = VALUE_GENERALA_DOBLE;
@@ -101,7 +100,6 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista, int general
 
         insertarNodoLista(lista, comb);
     }
-    
 
     // POKER
     if (existeCombinacion(repetidos, 4))
@@ -172,34 +170,19 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista, int general
 bool isStairway(int juego[DICES])
 {
 
-    bool isAscendant = true;
-    int lastNumber = juego[0];
-    int dice = 1;
-    while (dice < DICES && isAscendant)
+    // ordenar el arreglo de menor a mayor
+    bool result = true;
+    BurbujaDados(juego);
+
+    // verificar si es escalera
+
+    for (int i = 0; i < DICES - 1; i++)
     {
-        if (juego[dice] != lastNumber + 1)
+        if (juego[i] + 1 != juego[i + 1])
         {
-            isAscendant = false;
+            result = false;
         }
-        lastNumber = juego[dice];
-        dice++;
     }
-
-    int lastNumber2 = juego[DICES - 1];
-    int dice2 = DICES - 2;
-    bool isDescendant = true;
-
-    while (dice2 >= 0 && isDescendant && !isAscendant)
-    {
-        if (juego[dice2] != lastNumber2 + 1)
-        {
-            isDescendant = false;
-        }
-        lastNumber2 = juego[dice2];
-        dice2--;
-    }
-
-    bool result = isAscendant || isDescendant;
 
     return result;
 }
@@ -254,29 +237,43 @@ void insertarNodoLista(nodoCombinacion *&lista, Combinacion dato)
     }
 }
 
-void eliminarNodo(nodoCombinacion*& lista, int v) // ELIMINAR POR TIPO
+void eliminarNodo(nodoCombinacion *&lista, int v) // ELIMINAR POR TIPO
 {
-        nodoCombinacion* actual = lista;
-        nodoCombinacion* ant = NULL;
+    nodoCombinacion *actual = lista;
+    nodoCombinacion *ant = NULL;
 
-        while(actual!=NULL && actual->dato.tipo != v) 
-        {
-            ant = actual;
-            actual = actual->sig;
-        }
+    while (actual != NULL && actual->dato.tipo != v)
+    {
+        ant = actual;
+        actual = actual->sig;
+    }
 
-        if(actual->dato.tipo !=v)             //no lo encontro
-        {
-            return; 
-        }                       
-        if(ant != NULL)
-        {
-           ant->sig = actual->sig;     //si no es el primer nodo
-        }                     
-        else 
-        {                               //si se elimina el primero
-            lista = actual->sig;        //actualiza puntero al inicio
-        }
-        delete actual;
+    if (actual->dato.tipo != v) // no lo encontro
+    {
         return;
+    }
+    if (ant != NULL)
+    {
+        ant->sig = actual->sig; // si no es el primer nodo
+    }
+    else
+    {                        // si se elimina el primero
+        lista = actual->sig; // actualiza puntero al inicio
+    }
+    delete actual;
+    return;
+}
+
+
+void BurbujaDados (int juego[DICES]) {
+    int aux;
+    for (int i = 0; i < DICES; i++) {
+        for (int j = 0; j < DICES - 1; j++) {
+            if (juego[j] > juego[j + 1]) {
+                aux = juego[j];
+                juego[j] = juego[j + 1];
+                juego[j + 1] = aux;
+            }
+        }
+    }
 }

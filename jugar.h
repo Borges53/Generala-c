@@ -11,6 +11,8 @@ bool existeCombinacion(int repeticiones[], int cantidad);
 void insertarNodoLista(nodoCombinacion *&lista, Combinacion dato);
 void eliminarNodo(nodoCombinacion*& lista, int v);
 
+void BurbujaDados(int juego[]);
+
 Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[][MAX_POSIBLES_COMBINACIONES], int actualPlayer);
 
 #include "jugar.cpp"
