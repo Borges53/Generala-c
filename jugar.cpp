@@ -11,7 +11,7 @@ using namespace std;
 Combinacion jugar(int juego[], int tableroJugadas[][MAX_POSIBLES_COMBINACIONES], int actualPlayer)
 {
     nodoCombinacion *lista = NULL;
-    obtenerCombinacion(juego, lista);
+    obtenerCombinacion(juego, lista, tableroJugadas[actualPlayer][COMB_GENERALA_DOBLE - 1]);
 
     Combinacion comb = seleccionarCombinacion(lista, tableroJugadas, actualPlayer);
     tableroJugadas[actualPlayer][comb.tipo - 1] = 1; // guardar que ya se jugo esa jugada
@@ -75,7 +75,7 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[]
 }
 
 // obtener combinaciones de generala
-Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
+Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista, int generalaDoble)
 {
     int repetidos[6] = {0, 0, 0, 0, 0, 0};
     // crear lista de combinacion
@@ -92,6 +92,17 @@ Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista)
 
         insertarNodoLista(lista, comb);
     }
+
+    if(generalaDoble == 1 && existeCombinacion(repetidos, 5))
+    {
+        Combinacion comb;
+        comb.puntos = VALUE_GENERALA_DOBLE;
+        comb.tipo = COMB_GENERALA_DOBLE;
+        strcpy(comb.nombre, "Generala Doble");
+
+        insertarNodoLista(lista, comb);
+    }
+    
 
     // POKER
     if (existeCombinacion(repetidos, 4))

@@ -3,7 +3,7 @@
 #include "constants.h"
 
 Combinacion jugar(int juego[], int tableroJugadas[][MAX_POSIBLES_COMBINACIONES], int actualPlayer);
-Combinacion obtenerCombinacion(int juego[],nodoCombinacion *&lista);
+Combinacion obtenerCombinacion(int juego[],nodoCombinacion *&lista,int generalaDoble);
 int obtenerRepeticiones(int juego[], int repeticiones[]);
 bool isStairway(int juego[]);
 
