@@ -15,11 +15,28 @@ void showResults(Combinacion[][ROUNDS], int);
 
 int main()
 {
-    int juego[5];
-    int jugadores = 2;
+    cout << "Bienvenido a la Generala" << endl;
+    cout << "------------------------" << endl;
+    cout << "Ingrese cantidad de jugadores: (entre 3 y 5)" << endl;
+    int jugadores;
+    cin >> jugadores;
 
+    while (jugadores < 3 || jugadores > 5)
+    {
+        cout << "Cantidad de jugadores invalida. Ingrese cantidad de jugadores: (entre 3 y 5)" << endl;
+        cin >> jugadores;
+    };
+
+    char nombreJugadores[jugadores][20];
+
+    for (int i = 0; i < jugadores; i++)
+    {
+        cout << "Ingrese nombre del jugador " << i + 1 << ": " << endl;
+        cin >> nombreJugadores[i];
+    }
+
+    int juego[5];
     Combinacion results[jugadores][ROUNDS];
-    char nombreJugadores[jugadores][20] = {"Juan", "Pedro"};
 
     // matriz para ver si se ya se jugo una jugada // 0 = no jugo, 1 = jugo
     int tableroJugadas[jugadores][MAX_POSIBLES_COMBINACIONES] = {0};
@@ -35,7 +52,7 @@ int main()
         cout << "Turno del jugador " << actualPlayer + 1 << ": " << endl;
 
         int tiros = tirar(juego);
-        int pe[5]= {1,3,2,5,4};
+        int pe[5] = {1, 3, 2, 5, 4};
         results[actualPlayer][actualRound] = jugar(pe, tableroJugadas, actualPlayer);
 
         if (tiros == 1 && results[actualPlayer][actualRound].tipo == COMB_GENERALA)
@@ -56,13 +73,12 @@ int main()
         }
     }
 
-    if(generalWin == 1)
+    if (generalWin == 1)
     {
-        
+
         cout << "El ganador es: " << nombreJugadores[actualPlayer] << " PORQUE SACO GENERALA PERO NO SE GUARDO EN EL ARCHIVO" << endl;
         return 0;
     }
-
 
     int winner = getWinner(results, jugadores);
     showResults(results, jugadores);
