@@ -52,8 +52,7 @@ int main()
         cout << "Turno del jugador " << actualPlayer + 1 << ": " << endl;
 
         int tiros = tirar(juego);
-        int pe[5] = {1, 3, 2, 5, 4};
-        results[actualPlayer][actualRound] = jugar(pe, tableroJugadas, actualPlayer);
+        results[actualPlayer][actualRound] = jugar(juego, tableroJugadas, actualPlayer);
 
         if (tiros == 1 && results[actualPlayer][actualRound].tipo == COMB_GENERALA)
         {
@@ -84,7 +83,7 @@ int main()
     showResults(results, jugadores);
 
     // Save Results  :  ACA VA LA LOGICA DE GUARDAR LOS RESULTADOS EN UN ARCHIVO
-    FILE *f = fopen("jugadas.dat", "r+");
+    FILE *f = fopen("jugadas.dat", "w+");
     cargarArchivo(f, results, jugadores, nombreJugadores);
 
     /*  Info variable;
