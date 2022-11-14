@@ -11,5 +11,7 @@ nodo* insertarOrdenado(nodo*&, Info);
 
 void mostrarTop3 (nodo*&);
 
+void mejoresJugadas();
+
 #include "mejoresJugadas.cpp"
 #endif // a_H

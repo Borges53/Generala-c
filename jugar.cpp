@@ -13,7 +13,7 @@ Combinacion jugar(int juego[], int tableroJugadas[][MAX_POSIBLES_COMBINACIONES],
     nodoCombinacion *lista = NULL;
     obtenerCombinacion(juego, lista);
 
-    Combinacion comb = seleccionarCombinacion(lista);
+    Combinacion comb = seleccionarCombinacion(lista, tableroJugadas, actualPlayer);
     tableroJugadas[actualPlayer][comb.tipo - 1] = 1; // guardar que ya se jugo esa jugada
 
     return comb;

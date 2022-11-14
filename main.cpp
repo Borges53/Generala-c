@@ -6,6 +6,7 @@
 #include "jugar.h"
 #include "constants.h"
 #include "fileManage.h"
+#include "mejoresJugadas.h"
 
 using namespace std;
 
@@ -50,16 +51,18 @@ int main()
 
     // Save Results  :  ACA VA LA LOGICA DE GUARDAR LOS RESULTADOS EN UN ARCHIVO
     FILE *f = fopen("jugadas.dat", "r+");
-    //cargarArchivo(f, results, jugadores,nombreJugadores);
+    cargarArchivo(f, results, jugadores,nombreJugadores);
 
-     Info variable;
+     /* Info variable;
     while (fread(&variable, sizeof(Info), 1, f))
     {
         cout << variable.nombre_jugador << " " << variable.puntaje << " " << variable.id_jugada << endl;
     }
-    fclose(f);
+    fclose(f); */
 
-    // cout << "El ganador es el jugador " << winner + 1 << "!!" << endl;
+    mejoresJugadas();
+
+    cout << "El ganador es el jugador " << winner + 1 << "!!" << endl;
 
     system("pause");
 
