@@ -17,13 +17,13 @@ int main()
 {
     cout << "Bienvenido a la Generala" << endl;
     cout << "------------------------" << endl;
-    cout << "Ingrese cantidad de jugadores: (entre 3 y 5)" << endl;
+    cout << "Ingrese cantidad de jugadores (entre 3 y 5): ";
     int jugadores;
     cin >> jugadores;
 
     while (jugadores < 3 || jugadores > 5)
     {
-        cout << "Cantidad de jugadores invalida. Ingrese cantidad de jugadores: (entre 3 y 5)" << endl;
+        cout << "Cantidad de jugadores invalida. Ingrese cantidad de jugadores (entre 3 y 5): " << endl;
         cin >> jugadores;
     };
 
@@ -31,7 +31,7 @@ int main()
 
     for (int i = 0; i < jugadores; i++)
     {
-        cout << "Ingrese nombre del jugador " << i + 1 << ": " << endl;
+        cout << "Ingrese nombre del jugador " << i + 1 << ": ";
         cin >> nombreJugadores[i];
     }
 

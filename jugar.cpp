@@ -27,7 +27,6 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[]
     nodoCombinacion *aux1 = lista;
     Combinacion comb;
 
-    cout << "Elegi una combinacion: " << endl;
     int aux = 1;
     int indexComb;
     nodoCombinacion *aux2 = NULL;
