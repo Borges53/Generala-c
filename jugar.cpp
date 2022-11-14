@@ -27,6 +27,7 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[]
     cout << "Elegi una combinacion: " << endl;
     int aux = 1;
     int indexComb;
+    nodoCombinacion *aux2= NULL;
     while (aux1 != NULL)
     {
         if (tableroJugadas[actualPlayer][aux1->dato.tipo - 1] == 0)
@@ -41,8 +42,10 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[]
         }
         else
         {
-            aux1 = aux1->sig;
+            aux2 = aux1->sig;
             eliminarNodo(lista, aux1->dato.tipo);
+            aux1 = aux2;
+
         }
     }
 
