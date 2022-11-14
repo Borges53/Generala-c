@@ -49,10 +49,20 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[]
 
     indexComb = -1;
 
-    while (indexComb < 0 || indexComb >= aux)
+    while ((indexComb < 0 || indexComb >= aux) && lista != NULL)
     {
         cout << "Selecciona una combinacion: " << endl;
         cin >> indexComb;
+    }
+
+    if (lista == NULL)
+    {
+
+        Combinacion comb;
+        comb.tipo = 0;
+        comb.puntos = 0;
+        strcpy(comb.nombre, "No hay mas combinaciones");
+        return comb;
     }
 
     aux1 = lista;
@@ -264,12 +274,15 @@ void eliminarNodo(nodoCombinacion *&lista, int v) // ELIMINAR POR TIPO
     return;
 }
 
-
-void BurbujaDados (int juego[DICES]) {
+void BurbujaDados(int juego[DICES])
+{
     int aux;
-    for (int i = 0; i < DICES; i++) {
-        for (int j = 0; j < DICES - 1; j++) {
-            if (juego[j] > juego[j + 1]) {
+    for (int i = 0; i < DICES; i++)
+    {
+        for (int j = 0; j < DICES - 1; j++)
+        {
+            if (juego[j] > juego[j + 1])
+            {
                 aux = juego[j];
                 juego[j] = juego[j + 1];
                 juego[j + 1] = aux;

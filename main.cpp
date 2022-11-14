@@ -52,8 +52,7 @@ int main()
         cout << "Turno del jugador " << actualPlayer + 1 << ": " << endl;
 
         int tiros = tirar(juego);
-        int pe[5] = {1, 3, 2, 5, 4};
-        results[actualPlayer][actualRound] = jugar(pe, tableroJugadas, actualPlayer);
+        results[actualPlayer][actualRound] = jugar(juego, tableroJugadas, actualPlayer);
 
         if (tiros == 1 && results[actualPlayer][actualRound].tipo == COMB_GENERALA)
         {
