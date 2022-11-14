@@ -41,8 +41,8 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[]
         }
         else
         {
-            eliminarNodo(lista, aux1->dato.tipo);
             aux1 = aux1->sig;
+            eliminarNodo(lista, aux1->dato.tipo);
         }
     }
 
@@ -241,21 +241,22 @@ void insertarNodoLista(nodoCombinacion *&lista, Combinacion dato)
     }
 }
 
-void eliminarNodo(nodoCombinacion*& lista, int v)
+void eliminarNodo(nodoCombinacion*& lista, int v) // ELIMINAR POR TIPO
 {
-        Nodo* actual = lista;
-        Nodo* ant = NULL;
+        nodoCombinacion* actual = lista;
+        nodoCombinacion* ant = NULL;
 
-        while(actual!=NULL && aux->info!=v) 
+        while(actual!=NULL && actual->dato.tipo != v) 
         {
             ant = actual;
             actual = actual->sig;
         }
-        if(actual->info!=v)             //no lo encontro
+
+        if(actual->dato.tipo !=v)             //no lo encontro
         {
             return; 
         }                       
-        if(ant!=NULL)
+        if(ant != NULL)
         {
            ant->sig = actual->sig;     //si no es el primer nodo
         }                     

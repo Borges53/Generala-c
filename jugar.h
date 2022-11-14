@@ -9,7 +9,7 @@ bool isStairway(int juego[]);
 
 bool existeCombinacion(int repeticiones[], int cantidad);
 void insertarNodoLista(nodoCombinacion *&lista, Combinacion dato);
-
+void eliminarNodo(nodoCombinacion*& lista, int v);
 
 Combinacion seleccionarCombinacion(nodoCombinacion *&lista);
 
