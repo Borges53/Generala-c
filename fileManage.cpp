@@ -2,6 +2,7 @@
 #include <iostream>
 #include <fstream>
 #include "constants.h"
+#include <ctime>
 
 void cargarArchivo(FILE *f, Combinacion matriz[][ROUNDS], int cantidadJugadores, char nombreJugadores[][20])
 {
@@ -30,6 +31,8 @@ void cargarArchivo(FILE *f, Combinacion matriz[][ROUNDS], int cantidadJugadores,
 	fseek(f, 0, SEEK_SET);
 
 	int puntaje = 0;
+	time_t now = time(0);
+	tm *ltm = localtime(&now);
 
 	for (int x = 0; x < cantidadJugadores; x++)
 	{
@@ -41,6 +44,7 @@ void cargarArchivo(FILE *f, Combinacion matriz[][ROUNDS], int cantidadJugadores,
 			puntaje += matriz[x][y].puntos;
 		}
 		variable.puntaje = puntaje;
+		variable.fecha = ltm->tm_year * 10000 + (ltm->tm_mon + 1) * 100 + ltm->tm_mday;
 		fwrite(&variable, sizeof(Info), 1, f);
 		id++;
 		puntaje = 0;
