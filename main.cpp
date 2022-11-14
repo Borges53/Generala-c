@@ -83,7 +83,7 @@ int main()
     showResults(results, jugadores);
 
     // Save Results  :  ACA VA LA LOGICA DE GUARDAR LOS RESULTADOS EN UN ARCHIVO
-    FILE *f = fopen("jugadas.dat", "w+");
+    FILE *f = fopen("jugadas.dat", "a+");
     cargarArchivo(f, results, jugadores, nombreJugadores);
 
     /*  Info variable;
