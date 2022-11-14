@@ -53,7 +53,7 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[]
 
     while ((indexComb < 0 || indexComb >= aux) && lista != NULL)
     {
-        cout << "Selecciona una combinacion: " << endl;
+        cout << "Selecciona una combinacion: ";
         cin >> indexComb;
     }
 
