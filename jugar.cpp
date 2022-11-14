@@ -41,6 +41,7 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[]
         }
         else
         {
+            eliminarNodo(lista, aux1->dato.tipo);
             aux1 = aux1->sig;
         }
     }
@@ -238,4 +239,30 @@ void insertarNodoLista(nodoCombinacion *&lista, Combinacion dato)
         aux2->sig = nuevoNodo;
         nuevoNodo->sig = aux1;
     }
+}
+
+void eliminarNodo(nodoCombinacion*& lista, int v)
+{
+        Nodo* actual = lista;
+        Nodo* ant = NULL;
+
+        while(actual!=NULL && aux->info!=v) 
+        {
+            ant = actual;
+            actual = actual->sig;
+        }
+        if(actual->info!=v)             //no lo encontro
+        {
+            return; 
+        }                       
+        if(ant!=NULL)
+        {
+           ant->sig = actual->sig;     //si no es el primer nodo
+        }                     
+        else 
+        {                               //si se elimina el primero
+            lista = actual->sig;        //actualiza puntero al inicio
+        }
+        delete actual;
+        return;
 }
