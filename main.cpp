@@ -15,7 +15,7 @@ void showResults(Combinacion[][ROUNDS], int);
 
 int main()
 {
-    int juego[5];
+    /* int juego[5];
     int jugadores = 2;
 
     Combinacion results[jugadores][ROUNDS];
@@ -47,22 +47,22 @@ int main()
     }
 
     int winner = getWinner(results, jugadores);
-    showResults(results, jugadores);
+    showResults(results, jugadores); */
 
     // Save Results  :  ACA VA LA LOGICA DE GUARDAR LOS RESULTADOS EN UN ARCHIVO
     FILE *f = fopen("jugadas.dat", "r+");
-    cargarArchivo(f, results, jugadores,nombreJugadores);
+    //cargarArchivo(f, results, jugadores,nombreJugadores);
 
-     /* Info variable;
+     Info variable;
     while (fread(&variable, sizeof(Info), 1, f))
     {
         cout << variable.nombre_jugador << " " << variable.puntaje << " " << variable.id_jugada << endl;
     }
-    fclose(f); */
+    fclose(f); 
 
-    mejoresJugadas();
+   /*  mejoresJugadas();
 
-    cout << "El ganador es el jugador " << winner + 1 << "!!" << endl;
+    cout << "El ganador es el jugador " << winner + 1 << "!!" << endl; */
 
     system("pause");
 
