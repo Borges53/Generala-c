@@ -14,7 +14,10 @@ Combinacion jugar(int juego[DICES], int tableroJugadas[][MAX_POSIBLES_COMBINACIO
     obtenerCombinacion(juego, lista, tableroJugadas[actualPlayer][COMB_GENERALA_DOBLE - 1]);
 
     Combinacion comb = seleccionarCombinacion(lista, tableroJugadas, actualPlayer);
-    tableroJugadas[actualPlayer][comb.tipo - 1] = 1; // guardar que ya se jugo esa jugada
+    if (comb.tipo != 0)
+    {
+        tableroJugadas[actualPlayer][comb.tipo - 1] = 1; // guardar que ya se jugo esa jugada
+    }
 
     return comb;
 }
