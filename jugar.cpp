@@ -8,7 +8,7 @@
 
 using namespace std;
 
-Combinacion jugar(int juego[], int tableroJugadas[][MAX_POSIBLES_COMBINACIONES], int actualPlayer)
+Combinacion jugar(int juego[DICES], int tableroJugadas[][MAX_POSIBLES_COMBINACIONES], int actualPlayer)
 {
     nodoCombinacion *lista = NULL;
     obtenerCombinacion(juego, lista, tableroJugadas[actualPlayer][COMB_GENERALA_DOBLE - 1]);
@@ -73,7 +73,7 @@ Combinacion seleccionarCombinacion(nodoCombinacion *&lista, int tableroJugadas[]
 }
 
 // obtener combinaciones de generala
-Combinacion obtenerCombinacion(int juego[], nodoCombinacion *&lista, int generalaDoble)
+Combinacion obtenerCombinacion(int juego[DICES], nodoCombinacion *&lista, int generalaDoble)
 {
     int repetidos[6] = {0, 0, 0, 0, 0, 0};
     // crear lista de combinacion
@@ -187,7 +187,7 @@ bool isStairway(int juego[DICES])
     return result;
 }
 
-int obtenerRepeticiones(int juego[], int repeticiones[])
+int obtenerRepeticiones(int juego[DICES], int repeticiones[])
 {
     for (int i = 1; i < 7; i++)
     {
