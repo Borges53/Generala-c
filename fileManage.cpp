@@ -44,7 +44,7 @@ void cargarArchivo(FILE *f, Combinacion matriz[][ROUNDS], int cantidadJugadores,
 			puntaje += matriz[x][y].puntos;
 		}
 		variable.puntaje = puntaje;
-		variable.fecha = ltm->tm_year * 10000 + (ltm->tm_mon + 1) * 100 + ltm->tm_mday;
+		variable.fecha = (1900 + ltm->tm_year) * 10000 + (ltm->tm_mon + 1) * 100 + ltm->tm_mday;
 		fwrite(&variable, sizeof(Info), 1, f);
 		id++;
 		puntaje = 0;
