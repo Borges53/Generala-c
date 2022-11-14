@@ -129,7 +129,7 @@ Combinacion obtenerCombinacion(int juego[DICES], nodoCombinacion *&lista, int ge
     {
         Combinacion comb;
         comb.puntos = 30;
-        comb.tipo = VALUE_FULL;
+        comb.tipo = COMB_FULL;
         strcpy(comb.nombre, "Full");
 
         insertarNodoLista(lista, comb);
